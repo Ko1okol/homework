@@ -31,19 +31,6 @@
   }
 }
 
-/* .shop__desc {
-  font-family: var(--secondf);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
-  text-align: center;
-  color: var(--main-color);
-  width: 628px;
-  position: relative;
-  left: 25.7%;
-  margin-bottom: 55px;
-} */
-
 /*.shop__container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -228,11 +215,41 @@
   margin-bottom: 20px;
 } */
 
-.shop__container {
+/* .shop__container {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 8px;
+} старый вариант на grid */
+
+.shop__container {
+  display: flex;
+  gap: 16px;
+}
+
+@media (width < 798px) {
+  .shop__container {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+.shop__container-left {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.shop__container-right {
+  display: flex;
+  gap: 16px;
+}
+
+@media (width < 598px) {
+  .shop__container-right {
+    flex-direction: column;
+  }
 }
 
 .shop__info-title {
@@ -253,43 +270,38 @@
   color: var(--main-color);
 }
 
+.watch {
+  transform: translateY(25px);
+}
+
+@media (width < 798px) {
+  .watch {
+    transform: translateY(-25px);
+  }
+}
+
+.shop__watch {
+  min-width: 310px;
+}
+
+.watch .shop__info-text .shop__info-title {
+  min-width: 150px;
+}
+
 .laptop {
-  grid-column: span 4 / span 4;
-  grid-row: span 3 / span 3;
   margin-bottom: 20px;
   padding-right: 55px;
 }
 
-.watch {
-  grid-column: span 4 / span 4;
-  grid-row: span 2 / span 2;
-  grid-column-start: 1;
-  grid-row-start: 4;
-  margin-top: 20px;
-}
-
-.phones {
-  grid-column: span 2 / span 2;
-  grid-row: span 5 / span 5;
-  grid-column-start: 5;
-  grid-row-start: 1;
-  margin-bottom: 20px;
-}
-
 .phones img {
-  margin-top: 144px;
+  margin-top: 100px;
   margin-inline: 15px;
-  /* height: 367px; */
 }
 
 .phones .text-overlay {
   display: block;
-  padding-top: 42px;
   min-width: 250px;
   padding-inline: 31px;
-}
-.phones .shop__info-text {
-  margin-bottom: 100px;
 }
 
 .phones .text-overlay p {
@@ -299,19 +311,11 @@
   text-align: center;
 }
 
-.tablet {
-  grid-column: span 2 / span 2;
-  grid-row: span 5 / span 5;
-  grid-column-start: 7;
-  grid-row-start: 1;
-  margin-bottom: 20px;
-}
-
 .tablet .text-overlay {
   display: block;
-  padding-top: 115px;
+  padding-top: 85px;
   padding-inline: 31px;
-  margin-bottom: 41px;
+  margin-bottom: 20px;
 }
 
 .tablet .text-overlay p {
@@ -320,7 +324,6 @@
 .tablet .text-overlay h3 {
   text-align: center;
 }
-
 .shop__card {
   width: 100%;
   user-select: none;
@@ -353,10 +356,10 @@
   align-items: center;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .shop__container {
-    grid-template-columns: 1fr; /* ← 1 колонка */
-    grid-template-rows: repeat(5, 1fr); /* 5 равных строк */
+    grid-template-columns: 1fr; 
+    grid-template-rows: repeat(5, 1fr);
   }
 
   .shop__card-main {
@@ -367,34 +370,33 @@
   .laptop {
     grid-column-start: 1;
     grid-row-start: 1;
-    grid-row: span 1 / span 1; /* строка 1 */
+    grid-row: span 1 / span 1;
   }
 
   .watch {
     grid-column-start: 1;
-    grid-row-start: 6; /* ❌ выходит за пределы! */
-    /* ИСПРАВЛЯЕМ: строки только 1–5 */
-    grid-row: span 1 / span 1; /* строка 5 */
-    grid-row-start: 5; /* последняя строка */
+    grid-row-start: 6; 
+    
+    grid-row: span 1 / span 1; 
+    grid-row-start: 5; 
   }
 
   .phones {
     grid-column-start: 1;
     grid-row-start: 3;
-    grid-row: span 3 / span 3; /* строки 3,4,5 — занимает 3/5 высоты (основной блок) */
+    grid-row: span 3 / span 3; 
   }
 
   .tablet {
     grid-column-start: 1;
     grid-row-start: 2;
-    grid-row: span 1 / span 1; /* строка 2 */
+    grid-row: span 1 / span 1; 
   }
 
-  /* Сохраняем стили */
   .laptop,
   .watch,
   .phones,
   .tablet {
     box-shadow: 0 4px 35px 0 rgba(0, 0, 0, 0.25);
   }
-}
+} */
