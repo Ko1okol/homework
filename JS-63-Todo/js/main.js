@@ -1,6 +1,13 @@
 "use strict";
 const todos = [];
 
+const todoKeys = {
+  id: "id",
+  date: "date",
+  text: "text",
+  is_completed: "is_completed",
+};
+
 const errTodoNotFound = (todoId) => `Todo with id ${todoId} not found`;
 
 // const getNewId = (todos) => {
@@ -24,45 +31,28 @@ const errTodoNotFound = (todoId) => `Todo with id ${todoId} not found`;
 //   );
 // };
 
-const todoKeys = {
-  id: "id",
-  datе: "date",
-  text: "text",
-  is_completed: "is_completed",
+const changeToFormateTime = () => {
+  const time = new Date();
+
+  const optionsRu = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+  return time.toLocaleString("ru-RU", optionsRu);
 };
-
-// const changeToFormateTime = (data) => {
-//   const data = new Date();
-//   const optionsRu = {
-//     year: "numeric",
-//     month: "2-digit",
-//     day: "2-digit",
-//     hour: "2-digit",
-//     minute: "2-digit",
-//     hour12: false,
-//   };
-//   return data.toLocaleString("ru-RU", optionsRu);
-// };
-
-const data = new Date();
-const optionsRu = {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-};
-
-const changeToFormateTime = data.toLocaleString("ru-RU", optionsRu);
 
 const getNewId = (todos) =>
   todos.reduce((maxId, todo) => Math.max(maxId, todo[todoKeys.id]), 0) + 1;
 
-const createTodo = (todos, text, date) => {
+const createTodo = (todos, text) => {
   const newTodo = {
     [todoKeys.id]: getNewId(todos),
-    [todoKeys.date]: changeToFormateTime,
+    [todoKeys.date]: changeToFormateTime(),
     [todoKeys.text]: text,
     [todoKeys.is_completed]: false,
   };
@@ -70,8 +60,6 @@ const createTodo = (todos, text, date) => {
   return newTodo;
   // [...todos,{}]
 };
-
-// const changeTodo = (todos, todoId) => {};
 
 const completeTodoById = (todos, todoId) => {
   const todo = todos.find((todo) => todo[todoKeys.id] === todoId);
