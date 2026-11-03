@@ -1,0 +1,80 @@
+.container__box {
+  padding: clamp(0.938rem, 0.104rem + 1.74vw, 2.188rem);
+  margin-top: 100px;
+  border: 2px solid var(--box-color);
+  border-radius: 50px;
+  box-shadow: 0px 0px 50px var(--main-color);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 150, 210, 0.8) 0%,
+    rgba(180, 130, 190, 0.8) 50%,
+    rgba(150, 100, 170, 0.8) 100%
+      /* rgba(65, 65, 65, 0.8) 100%,
+    rgba(37, 37, 37, 0.8) 100%,
+    rgba(5, 5, 5, 0.8) 100% */
+  );
+  overflow: hidden;
+}
+
+@media (width < 600px) {
+  .container__box {
+    width: 100%;
+    margin-inline: auto;
+  }
+  .content__text {
+    margin-top: 15px;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  /* padding: 50px 20px; */
+  text-align: center;
+  color: var(--second-color);
+  text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.content h1 {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 25px;
+}
+
+/* ------------------------------------ */
+
+.conteiner__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (width < 540px) {
+  .conteiner__button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.button__take-me {
+  transition:
+    transform var(--trans-time),
+    scale var(--trans-time);
+}
+
+.button__take-me:hover {
+  transform: translateY(-15px);
+  scale: 1.1;
+}
+
+.button__title {
+  padding: 15px;
+  text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--box-color);
+  border-radius: 20px;
+}

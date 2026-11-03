@@ -1,0 +1,25 @@
+.page-1,
+.page-2 {
+  width: 1100px;
+  margin: 0px auto;
+  font-family: var(--first);
+}
+
+@media (width < 600px) {
+  .page-1,
+  .page-2 {
+    width: 80%;
+    margin: 0px auto;
+  }
+}
+
+.page__body {
+  min-width: 315px;
+  color: var(--second-color);
+  background: var(--gray-color);
+  min-height: auto;
+}
+
+a {
+  color: var(--link-color-3);
+}

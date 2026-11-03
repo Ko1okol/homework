@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Phonix";
+  src: local("inter"), url("../../fonts/Phonix.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

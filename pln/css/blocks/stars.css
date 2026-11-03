@@ -1,0 +1,155 @@
+.starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z--1); /* Помещаем фон за контентом */
+  overflow: hidden; /* Скрываем все, что выходит за пределы */
+
+  /* Основной фон - радиальный градиент (имитация свечения) */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 150, 210, 0.8) 0%,
+    rgba(180, 130, 190, 0.8) 50%,
+    rgba(150, 100, 170, 0.8) 100%
+      /* rgba(65, 65, 65, 0.8) 0%,
+    rgba(37, 37, 37, 0.8) 50%,
+    rgba(5, 5, 5, 0.8) 100% */
+  );
+
+  /* Анимация для самого градиента (делает его слегка подвижным) */
+  animation: gradientBG 20s ease infinite;
+}
+
+/* Псевдоэлементы для создания звезд */
+.starry-background::before,
+.starry-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat; /* Повторяем паттерн звезд */
+}
+
+/* Первый слой звезд */
+.starry-background::before {
+  /* Набор "звезд" разного размера и прозрачности */
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.8) 5px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(255, 255, 255, 0.8) 3px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 255, 255, 0.8) 4px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.8) 2px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 255, 255, 0.8) 5px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 255, 255, 0.7) 3px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(255, 255, 255, 0.7) 4px,
+      transparent 0
+    );
+  background-size: 250px 250px; /* Размер области, где рисуются звезды */
+  animation: twinkle1 2s linear infinite; /* Анимация мерцания для первого слоя */
+}
+
+/* Второй слой звезд (другие размеры, прозрачность, анимация) */
+.starry-background::after {
+  background-image:
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(255, 255, 255, 0.6) 4px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 90% 60%,
+      rgba(255, 255, 255, 0.6) 3px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 60% 15%,
+      rgba(255, 255, 255, 0.5) 5px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 10% 60%,
+      rgba(255, 255, 255, 0.5) 2px,
+      transparent 0
+    );
+  background-size: 300px 300px;
+  animation: twinkle2 1s linear infinite alternate; /* Другой тайминг и направление */
+}
+
+/* Анимация мерцания для первого слоя */
+@keyframes twinkle1 {
+  0% {
+    opacity: 0.5;
+  } /* Начинаем с полупрозрачного */
+  50% {
+    opacity: 1;
+  } /* Максимальная яркость */
+  100% {
+    opacity: 0.5;
+  } /* Возвращаемся к полупрозрачному */
+}
+
+/* Анимация мерцания для второго слоя (чуть другая) */
+@keyframes twinkle2 {
+  0% {
+    opacity: 0.4;
+  }
+  30% {
+    opacity: 0.8;
+  } /* Более яркое мерцание */
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.4;
+  } /* Может отличаться от 0% для "альтернативного" режима */
+}
+
+/* Анимация для градиента (делает фон менее статичным) */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  } /* Начальная позиция градиента */
+  50% {
+    background-position: 100% 50%;
+  } /* Средняя позиция */
+  100% {
+    background-position: 0% 50%;
+  } /* Возврат к начальной */
+}
+
+/* Пример адаптивности: на очень маленьких экранах можно уменьшить звезды или убрать анимацию */
+@media (max-width: 600px) {
+  .starry-background::before,
+  .starry-background::after {
+    background-size: 150px 150px; /* Уменьшаем размер паттерна звезд */
+  }
+}

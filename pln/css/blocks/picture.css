@@ -1,0 +1,28 @@
+.pingvi__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pingvi__title {
+  text-align: center;
+  font-family: var(--first);
+}
+
+@media (width < 600px) {
+  .pingvi__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 150px;
+    position: relative;
+    right: 20px;
+    bottom: 15px;
+  }
+
+  .pingvi__title {
+    text-align: center;
+    font-family: var(--first);
+  }
+}
